@@ -22,7 +22,24 @@
     </properties>
     <url>https://github.com/Drachir000/ELib</url>
 
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Drachir000 Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/drachir000/ELib</url>
+        </repository>
+    </distributionManagement>
+
+    <licenses>
+        <license>
+            <name>MIT</name>
+            <url>https://github.com/Drachir000/ELib/blob/master/LICENSE</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
     <build>
+        <finalName>${project.name} v${project.version}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
