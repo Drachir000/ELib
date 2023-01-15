@@ -40,8 +40,8 @@ public abstract class Enchantment extends org.bukkit.enchantments.Enchantment {
     public Enchantment(String name, String defaultPrefix, String maxLevelPrefix, NamespacedKey namespacedKey, int minLevel, int maxLevel, EnchantmentTarget enchantmentTarget, boolean curse, List<NamespacedKey> conflicts, List<Material> enchantable) {
         super(namespacedKey);
         this.name = name;
-        this.defaultPrefix = defaultPrefix;
-        this.maxLevelPrefix = maxLevelPrefix;
+        this.defaultPrefix = defaultPrefix; // TODO: make default value configurable
+        this.maxLevelPrefix = maxLevelPrefix; // TODO: make default value configurable
         this.namespacedKey = namespacedKey;
         if (minLevel < 1)
             minLevel = 1;
