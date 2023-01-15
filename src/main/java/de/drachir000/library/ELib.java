@@ -1,13 +1,20 @@
 package de.drachir000.library;
 
 import de.drachir000.library.enchantments.Enchantment;
+import de.drachir000.library.utils.LoreManager;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.NamespacedKey;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The main Enchantment-Library class
+ * @author Drachir000
+ * @since 0.0.0
+ */
 public final class ELib extends JavaPlugin {
 
     private static final int bStatsID = 17412;
@@ -16,6 +23,8 @@ public final class ELib extends JavaPlugin {
     private static ELib instance;
 
     private List<Enchantment> registeredEnchantments;
+
+    private LoreManager loreManager;
 
     @Override
     public void onEnable() {
@@ -27,7 +36,10 @@ public final class ELib extends JavaPlugin {
         // TODO: register vanilla enchantments
         // TODO: register enchantments from enchantments-configuration file
 
+        this.loreManager = new LoreManager(this);
+
         loadMetrics();
+
     }
 
     /**
@@ -136,6 +148,15 @@ public final class ELib extends JavaPlugin {
                 return registeredEnchantment;
         }
         return null;
+    }
+
+    /**
+     * Updates the lore of an item.
+     * @since 0.0.3
+     * @param item The item whose lore is to be updated
+     */
+    public void updateLore(ItemStack item) {
+        loreManager.updateLore(item);
     }
 
     private void loadMetrics() {

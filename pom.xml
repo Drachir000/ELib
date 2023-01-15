@@ -6,7 +6,7 @@
 
     <groupId>de.drachir000.library</groupId>
     <artifactId>enchantments</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
     <packaging>jar</packaging>
 
     <name>ELib</name>
@@ -60,10 +60,15 @@
                             <pattern>org.bstats</pattern>
                             <shadedPattern>de.drachir000.library.bstats</shadedPattern>
                         </relocation>
+                        <relocation>
+                            <pattern>de.tr7zw.changeme.nbtapi</pattern>
+                            <shadedPattern>de.drachir000.library.nbtapi</shadedPattern>
+                        </relocation>
                     </relocations>
                 </configuration>
                 <executions>
                     <execution>
+                        <id>shade</id>
                         <phase>package</phase>
                         <goals>
                             <goal>shade</goal>
@@ -88,6 +93,11 @@
             <id>spigotmc-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
+        <repository>
+            <id>codemc-repo</id>
+            <url>https://repo.codemc.org/repository/maven-public/</url>
+            <layout>default</layout>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -101,6 +111,12 @@
             <groupId>org.bstats</groupId>
             <artifactId>bstats-bukkit</artifactId>
             <version>3.0.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>de.tr7zw</groupId>
+            <artifactId>item-nbt-api</artifactId>
+            <version>2.11.1</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
