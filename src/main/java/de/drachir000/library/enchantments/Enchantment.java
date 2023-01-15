@@ -18,7 +18,7 @@ public abstract class Enchantment extends org.bukkit.enchantments.Enchantment {
 
     private String name, defaultPrefix, maxLevelPrefix;
     private NamespacedKey namespacedKey;
-    private int minLevel, maxLevel;
+    private short minLevel, maxLevel;
     private EnchantmentTarget enchantmentTarget;
     private boolean curse;
     private List<NamespacedKey> conflicts;
@@ -37,7 +37,7 @@ public abstract class Enchantment extends org.bukkit.enchantments.Enchantment {
      * @param conflicts A list of namespaces of enchantments this enchantment conflicts with<br>
      * @param enchantable A list of every material type, this enchantment should be able to get applied on<br>
      * */
-    public Enchantment(String name, String defaultPrefix, String maxLevelPrefix, NamespacedKey namespacedKey, int minLevel, int maxLevel, EnchantmentTarget enchantmentTarget, boolean curse, List<NamespacedKey> conflicts, List<Material> enchantable) {
+    public Enchantment(String name, String defaultPrefix, String maxLevelPrefix, NamespacedKey namespacedKey, short minLevel, short maxLevel, EnchantmentTarget enchantmentTarget, boolean curse, List<NamespacedKey> conflicts, List<Material> enchantable) {
         super(namespacedKey);
         this.name = name;
         this.defaultPrefix = defaultPrefix; // TODO: make default value configurable
@@ -83,8 +83,8 @@ public abstract class Enchantment extends org.bukkit.enchantments.Enchantment {
      * @param conflicts A list of namespaces of enchantments this enchantment conflicts with<br>
      * @param enchantable A list of every material type, this enchantment should be able to get applied on<br>
      * */
-    public Enchantment(String name, Plugin plugin, int maxLevel, EnchantmentTarget enchantmentTarget, boolean curse, List<NamespacedKey> conflicts, List<Material> enchantable) {
-        this(name, "§r§7", "§r§6", NamespacedKey.fromString(name.toLowerCase(), plugin), 1, maxLevel, enchantmentTarget, curse, conflicts, enchantable);
+    public Enchantment(String name, Plugin plugin, short maxLevel, EnchantmentTarget enchantmentTarget, boolean curse, List<NamespacedKey> conflicts, List<Material> enchantable) {
+        this(name, "§r§7", "§r§6", NamespacedKey.fromString(name.toLowerCase(), plugin), (short) 1, maxLevel, enchantmentTarget, curse, conflicts, enchantable);
     }
     /**
      * defaultPrefix - The prefix, written before the name in the item lore, when the enchantment doesn't is at max level (minecraft vanilla uses "§r§7"). Will be "§r§7".
@@ -114,7 +114,7 @@ public abstract class Enchantment extends org.bukkit.enchantments.Enchantment {
      * @param maxLevel The maximal level of the enchantment. Can't be lower than 1<br>
      * @param enchantmentTarget The targeted group of item types, this enchantment should be able to get applied on. (This is not used, to determine if a specific item is enchantable)<br>
      * */
-    public Enchantment(String name, Plugin plugin, int maxLevel, EnchantmentTarget enchantmentTarget) {
+    public Enchantment(String name, Plugin plugin, short maxLevel, EnchantmentTarget enchantmentTarget) {
         this(name, plugin, maxLevel, enchantmentTarget, false, null, null);
     }
 
@@ -283,7 +283,7 @@ public abstract class Enchantment extends org.bukkit.enchantments.Enchantment {
      * @since 0.0.1
      * @return The minimal level of the enchantment. Can't be lower than 1 or higher than the maximum level
      */
-    public int getMinLevel() {
+    public short getMinLevel() {
         return minLevel;
     }
 
@@ -292,7 +292,7 @@ public abstract class Enchantment extends org.bukkit.enchantments.Enchantment {
      * @since 0.0.1
      * @param minLevel The minimal level of the enchantment. Can't be lower than 1 or higher than the maximum level
      */
-    public void setMinLevel(int minLevel) {
+    public void setMinLevel(short minLevel) {
         if (minLevel < 1)
             minLevel = 1;
         if (minLevel > maxLevel)
@@ -314,7 +314,7 @@ public abstract class Enchantment extends org.bukkit.enchantments.Enchantment {
      * @since 0.0.1
      * @param maxLevel The maximal level of the enchantment. Can't be lower than 1 or the minimum level
      */
-    public void setMaxLevel(int maxLevel) {
+    public void setMaxLevel(short maxLevel) {
         if (maxLevel < 1)
             maxLevel = 1;
         if (maxLevel < minLevel)
