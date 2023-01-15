@@ -180,7 +180,7 @@ public class LoreManager {
                 resultBuilder.append(symbols[i]);
             }
         }
-        return resultBuilder.toString();
+        return resultBuilder.toString(); // TODO add config option to replace "I" with ""
     }
 
     private void addLoreLinesToNBT(ItemStack item, Map<String, String> addedLores) {

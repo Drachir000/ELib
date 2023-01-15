@@ -1,0 +1,1016 @@
+{
+  "aqua_affinity": {
+    "name": "Aqua Affinity",
+    "max-level": 1,
+    "enchantment-target": "ARMOR_HEAD",
+    "curse": false,
+    "conflicts": [],
+    "enchantable": [
+      "LEATHER_HELMET",
+      "GOLDEN_HELMET",
+      "CHAINMAIL_HELMET",
+      "IRON_HELMET",
+      "DIAMOND_HELMET",
+      "NETHERITE_HELMET",
+      "TURTLE_HELMET"
+    ]
+  },
+  "bane_of_arthropods ": {
+    "name": "Bane of Arthropods",
+    "max-level": 5,
+    "enchantment-target": "WEAPON",
+    "curse": false,
+    "conflicts": [
+      "minecraft:smite",
+      "minecraft:sharpness"
+    ],
+    "enchantable": [
+      "WOODEN_SWORD",
+      "GOLDEN_SWORD",
+      "STONE_SWORD",
+      "IRON_SWORD",
+      "DIAMOND_SWORD",
+      "NETHERITE_SWORD",
+
+      "WOODEN_AXE",
+      "GOLDEN_AXE",
+      "STONE_AXE",
+      "IRON_AXE",
+      "DIAMOND_AXE",
+      "NETHERITE_AXE"
+    ]
+  },
+  "blast_protection": {
+    "name": "Blast Protection",
+    "max-level": 4,
+    "enchantment-target": "ARMOR",
+    "curse": false,
+    "conflicts": [
+      "minecraft:fire_protection",
+      "minecraft:protection",
+      "minecraft:projectile_protection"
+    ],
+    "enchantable": [
+      "LEATHER_HELMET",
+      "GOLDEN_HELMET",
+      "CHAINMAIL_HELMET",
+      "IRON_HELMET",
+      "DIAMOND_HELMET",
+      "NETHERITE_HELMET",
+      "TURTLE_HELMET",
+
+      "LEATHER_CHESTPLATE",
+      "GOLDEN_CHESTPLATE",
+      "CHAINMAIL_CHESTPLATE",
+      "IRON_CHESTPLATE",
+      "DIAMOND_CHESTPLATE",
+      "NETHERITE_CHESTPLATE",
+
+      "LEATHER_LEGGINGS",
+      "GOLDEN_LEGGINGS",
+      "CHAINMAIL_LEGGINGS",
+      "IRON_LEGGINGS",
+      "DIAMOND_LEGGINGS",
+      "NETHERITE_LEGGINGS",
+
+      "LEATHER_BOOTS",
+      "GOLDEN_BOOTS",
+      "CHAINMAIL_BOOTS",
+      "IRON_BOOTS",
+      "DIAMOND_BOOTS",
+      "NETHERITE_BOOTS"
+    ]
+  },
+  "channeling": {
+    "name": "Channeling",
+    "max-level": 1,
+    "enchantment-target": "TRIDENT",
+    "curse": false,
+    "conflicts": [
+      "minecraft:riptide"
+    ],
+    "enchantable": [
+      "TRIDENT"
+    ]
+  },
+  "binding_curse": {
+    "name": "Curse of Binding",
+    "defaultPrefix": "§r§c",
+    "maxLevelPrefix": "§r§c",
+    "max-level": 1,
+    "enchantment-target": "WEARABLE",
+    "curse": true,
+    "conflicts": [],
+    "enchantable": [
+      "CARVED_PUMPKIN",
+      "SKELETON_SKULL",
+      "WITHER_SKELETON_SKULL",
+      "PLAYER_HEAD",
+      "ZOMBIE_HEAD",
+      "CREEPER_HEAD",
+      "DRAGON_HEAD",
+      "LEATHER_HELMET",
+      "GOLDEN_HELMET",
+      "CHAINMAIL_HELMET",
+      "IRON_HELMET",
+      "DIAMOND_HELMET",
+      "NETHERITE_HELMET",
+      "TURTLE_HELMET",
+
+      "ELYTRA",
+      "LEATHER_CHESTPLATE",
+      "GOLDEN_CHESTPLATE",
+      "CHAINMAIL_CHESTPLATE",
+      "IRON_CHESTPLATE",
+      "DIAMOND_CHESTPLATE",
+      "NETHERITE_CHESTPLATE",
+
+      "LEATHER_LEGGINGS",
+      "GOLDEN_LEGGINGS",
+      "CHAINMAIL_LEGGINGS",
+      "IRON_LEGGINGS",
+      "DIAMOND_LEGGINGS",
+      "NETHERITE_LEGGINGS",
+
+      "LEATHER_BOOTS",
+      "GOLDEN_BOOTS",
+      "CHAINMAIL_BOOTS",
+      "IRON_BOOTS",
+      "DIAMOND_BOOTS",
+      "NETHERITE_BOOTS"
+    ]
+  },
+  "vanishing_curse": {
+    "name": "Curse of Vanishing",
+    "defaultPrefix": "§r§c",
+    "maxLevelPrefix": "§r§c",
+    "max-level": 1,
+    "enchantment-target": "ALL",
+    "curse": true,
+    "conflicts": [],
+    "enchantable": [
+      "CARVED_PUMPKIN",
+      "SKELETON_SKULL",
+      "WITHER_SKELETON_SKULL",
+      "PLAYER_HEAD",
+      "ZOMBIE_HEAD",
+      "CREEPER_HEAD",
+      "DRAGON_HEAD",
+      "LEATHER_HELMET",
+      "GOLDEN_HELMET",
+      "CHAINMAIL_HELMET",
+      "IRON_HELMET",
+      "DIAMOND_HELMET",
+      "NETHERITE_HELMET",
+      "TURTLE_HELMET",
+
+      "ELYTRA",
+      "LEATHER_CHESTPLATE",
+      "GOLDEN_CHESTPLATE",
+      "CHAINMAIL_CHESTPLATE",
+      "IRON_CHESTPLATE",
+      "DIAMOND_CHESTPLATE",
+      "NETHERITE_CHESTPLATE",
+
+      "LEATHER_LEGGINGS",
+      "GOLDEN_LEGGINGS",
+      "CHAINMAIL_LEGGINGS",
+      "IRON_LEGGINGS",
+      "DIAMOND_LEGGINGS",
+      "NETHERITE_LEGGINGS",
+
+      "LEATHER_BOOTS",
+      "GOLDEN_BOOTS",
+      "CHAINMAIL_BOOTS",
+      "IRON_BOOTS",
+      "DIAMOND_BOOTS",
+      "NETHERITE_BOOTS",
+
+      "WOODEN_SWORD",
+      "GOLDEN_SWORD",
+      "STONE_SWORD",
+      "IRON_SWORD",
+      "DIAMOND_SWORD",
+      "NETHERITE_SWORD",
+
+      "WOODEN_AXE",
+      "GOLDEN_AXE",
+      "STONE_AXE",
+      "IRON_AXE",
+      "DIAMOND_AXE",
+      "NETHERITE_AXE",
+
+      "WOODEN_PICKAXE",
+      "GOLDEN_PICKAXE",
+      "STONE_PICKAXE",
+      "IRON_PICKAXE",
+      "DIAMOND_PICKAXE",
+      "NETHERITE_PICKAXE",
+
+      "WOODEN_SHOVEL",
+      "GOLDEN_SHOVEL",
+      "STONE_SHOVEL",
+      "IRON_SHOVEL",
+      "DIAMOND_SHOVEL",
+      "NETHERITE_SHOVEL",
+
+      "WOODEN_HOE",
+      "GOLDEN_HOE",
+      "STONE_HOE",
+      "IRON_HOE",
+      "DIAMOND_HOE",
+      "NETHERITE_HOE",
+
+      "FISHING_ROD",
+      "BOW",
+      "SHEARS",
+      "FLINT_AND_STEEL",
+      "COMPASS",
+      "CARROT_ON_A_STICK",
+      "WARPED_FUNGUS_ON_A_STICK",
+      "SHIELD",
+      "TRIDENT",
+      "CROSSBOW"
+    ]
+  },
+  "depth_strider": {
+    "name": "Depth Strider",
+    "max-level": 3,
+    "enchantment-target": "ARMOR_FEET",
+    "curse": false,
+    "conflicts": [
+      "minecraft:frost_walker"
+    ],
+    "enchantable": [
+      "LEATHER_BOOTS",
+      "GOLDEN_BOOTS",
+      "CHAINMAIL_BOOTS",
+      "IRON_BOOTS",
+      "DIAMOND_BOOTS",
+      "NETHERITE_BOOTS"
+    ]
+  },
+  "efficiency": {
+    "name": "Efficiency",
+    "max-level": 5,
+    "enchantment-target": "TOOL",
+    "curse": false,
+    "conflicts": [],
+    "enchantable": [
+      "WOODEN_AXE",
+      "GOLDEN_AXE",
+      "STONE_AXE",
+      "IRON_AXE",
+      "DIAMOND_AXE",
+      "NETHERITE_AXE",
+
+      "WOODEN_PICKAXE",
+      "GOLDEN_PICKAXE",
+      "STONE_PICKAXE",
+      "IRON_PICKAXE",
+      "DIAMOND_PICKAXE",
+      "NETHERITE_PICKAXE",
+
+      "WOODEN_SHOVEL",
+      "GOLDEN_SHOVEL",
+      "STONE_SHOVEL",
+      "IRON_SHOVEL",
+      "DIAMOND_SHOVEL",
+      "NETHERITE_SHOVEL",
+
+      "WOODEN_HOE",
+      "GOLDEN_HOE",
+      "STONE_HOE",
+      "IRON_HOE",
+      "DIAMOND_HOE",
+      "NETHERITE_HOE",
+
+      "SHEARS"
+    ]
+  },
+  "feather_falling": {
+    "name": "Feather Falling",
+    "max-level": 4,
+    "enchantment-target": "ARMOR_FEET",
+    "curse": false,
+    "conflicts": [],
+    "enchantable": [
+      "LEATHER_BOOTS",
+      "GOLDEN_BOOTS",
+      "CHAINMAIL_BOOTS",
+      "IRON_BOOTS",
+      "DIAMOND_BOOTS",
+      "NETHERITE_BOOTS"
+    ]
+  },
+  "fire_aspect": {
+    "name": "Fire Aspect",
+    "max-level": 2,
+    "enchantment-target": "WEAPON",
+    "curse": false,
+    "conflicts": [],
+    "enchantable": [
+      "WOODEN_SWORD",
+      "GOLDEN_SWORD",
+      "STONE_SWORD",
+      "IRON_SWORD",
+      "DIAMOND_SWORD",
+      "NETHERITE_SWORD"
+    ]
+  },
+  "fire_protection": {
+    "name": "Fire Protection",
+    "max-level": 4,
+    "enchantment-target": "ARMOR",
+    "curse": false,
+    "conflicts": [
+      "minecraft:blast_protection",
+      "minecraft:protection",
+      "minecraft:projectile_protection"
+    ],
+    "enchantable": [
+      "LEATHER_HELMET",
+      "GOLDEN_HELMET",
+      "CHAINMAIL_HELMET",
+      "IRON_HELMET",
+      "DIAMOND_HELMET",
+      "NETHERITE_HELMET",
+      "TURTLE_HELMET",
+
+      "LEATHER_CHESTPLATE",
+      "GOLDEN_CHESTPLATE",
+      "CHAINMAIL_CHESTPLATE",
+      "IRON_CHESTPLATE",
+      "DIAMOND_CHESTPLATE",
+      "NETHERITE_CHESTPLATE",
+
+      "LEATHER_LEGGINGS",
+      "GOLDEN_LEGGINGS",
+      "CHAINMAIL_LEGGINGS",
+      "IRON_LEGGINGS",
+      "DIAMOND_LEGGINGS",
+      "NETHERITE_LEGGINGS",
+
+      "LEATHER_BOOTS",
+      "GOLDEN_BOOTS",
+      "CHAINMAIL_BOOTS",
+      "IRON_BOOTS",
+      "DIAMOND_BOOTS",
+      "NETHERITE_BOOTS"
+    ]
+  },
+  "flame": {
+    "name": "Flame",
+    "max-level": 1,
+    "enchantment-target": "BOW",
+    "curse": false,
+    "conflicts": [],
+    "enchantable": [
+      "BOW"
+    ]
+  },
+  "fortune": {
+    "name": "Fortune",
+    "max-level": 3,
+    "enchantment-target": "TOOL",
+    "curse": false,
+    "conflicts": [
+      "minecraft:silk_touch"
+    ],
+    "enchantable": [
+      "WOODEN_AXE",
+      "GOLDEN_AXE",
+      "STONE_AXE",
+      "IRON_AXE",
+      "DIAMOND_AXE",
+      "NETHERITE_AXE",
+
+      "WOODEN_PICKAXE",
+      "GOLDEN_PICKAXE",
+      "STONE_PICKAXE",
+      "IRON_PICKAXE",
+      "DIAMOND_PICKAXE",
+      "NETHERITE_PICKAXE",
+
+      "WOODEN_SHOVEL",
+      "GOLDEN_SHOVEL",
+      "STONE_SHOVEL",
+      "IRON_SHOVEL",
+      "DIAMOND_SHOVEL",
+      "NETHERITE_SHOVEL",
+
+      "WOODEN_HOE",
+      "GOLDEN_HOE",
+      "STONE_HOE",
+      "IRON_HOE",
+      "DIAMOND_HOE",
+      "NETHERITE_HOE"
+    ]
+  },
+  "frost_walker": {
+    "name": "Frost Walker",
+    "max-level": 2,
+    "enchantment-target": "ARMOR_FEET",
+    "curse": false,
+    "conflicts": [
+      "minecraft:depth_strider"
+    ],
+    "enchantable": [
+      "LEATHER_BOOTS",
+      "GOLDEN_BOOTS",
+      "CHAINMAIL_BOOTS",
+      "IRON_BOOTS",
+      "DIAMOND_BOOTS",
+      "NETHERITE_BOOTS"
+    ]
+  },
+  "impaling": {
+    "name": "Impaling",
+    "max-level": 5,
+    "enchantment-target": "TRIDENT",
+    "curse": false,
+    "conflicts": [],
+    "enchantable": [
+      "TRIDENT"
+    ]
+  },
+  "infinity": {
+    "name": "Infinity",
+    "max-level": 1,
+    "enchantment-target": "BOW",
+    "curse": false,
+    "conflicts": [
+      "minecraft:mending"
+    ],
+    "enchantable": [
+      "BOW"
+    ]
+  },
+  "knockback": {
+    "name": "Knockback",
+    "max-level": 2,
+    "enchantment-target": "WEAPON",
+    "curse": false,
+    "conflicts": [],
+    "enchantable": [
+      "WOODEN_SWORD",
+      "GOLDEN_SWORD",
+      "STONE_SWORD",
+      "IRON_SWORD",
+      "DIAMOND_SWORD",
+      "NETHERITE_SWORD"
+    ]
+  },
+  "looting": {
+    "name": "Looting",
+    "max-level": 3,
+    "enchantment-target": "WEAPON",
+    "curse": false,
+    "conflicts": [],
+    "enchantable": [
+      "WOODEN_SWORD",
+      "GOLDEN_SWORD",
+      "STONE_SWORD",
+      "IRON_SWORD",
+      "DIAMOND_SWORD",
+      "NETHERITE_SWORD"
+    ]
+  },
+  "loyalty": {
+    "name": "Loyalty",
+    "max-level": 3,
+    "enchantment-target": "TRIDENT",
+    "curse": false,
+    "conflicts": [
+      "minecraft:riptide"
+    ],
+    "enchantable": [
+      "TRIDENT"
+    ]
+  },
+  "luck_of_the_sea": {
+    "name": "Luck of the Sea",
+    "max-level": 3,
+    "enchantment-target": "FISHING_ROD",
+    "curse": false,
+    "conflicts": [],
+    "enchantable": [
+      "FISHING_ROD"
+    ]
+  },
+  "lure": {
+    "name": "Lure",
+    "max-level": 3,
+    "enchantment-target": "FISHING_ROD",
+    "curse": false,
+    "conflicts": [],
+    "enchantable": [
+      "FISHING_ROD"
+    ]
+  },
+  "mending": {
+    "name": "Mending",
+    "max-level": 1,
+    "enchantment-target": "BREAKABLE",
+    "curse": false,
+    "conflicts": [
+      "minecraft:infinity"
+    ],
+    "enchantable": [
+      "LEATHER_HELMET",
+      "GOLDEN_HELMET",
+      "CHAINMAIL_HELMET",
+      "IRON_HELMET",
+      "DIAMOND_HELMET",
+      "NETHERITE_HELMET",
+      "TURTLE_HELMET",
+
+      "ELYTRA",
+      "LEATHER_CHESTPLATE",
+      "GOLDEN_CHESTPLATE",
+      "CHAINMAIL_CHESTPLATE",
+      "IRON_CHESTPLATE",
+      "DIAMOND_CHESTPLATE",
+      "NETHERITE_CHESTPLATE",
+
+      "LEATHER_LEGGINGS",
+      "GOLDEN_LEGGINGS",
+      "CHAINMAIL_LEGGINGS",
+      "IRON_LEGGINGS",
+      "DIAMOND_LEGGINGS",
+      "NETHERITE_LEGGINGS",
+
+      "LEATHER_BOOTS",
+      "GOLDEN_BOOTS",
+      "CHAINMAIL_BOOTS",
+      "IRON_BOOTS",
+      "DIAMOND_BOOTS",
+      "NETHERITE_BOOTS",
+
+      "WOODEN_SWORD",
+      "GOLDEN_SWORD",
+      "STONE_SWORD",
+      "IRON_SWORD",
+      "DIAMOND_SWORD",
+      "NETHERITE_SWORD",
+
+      "WOODEN_AXE",
+      "GOLDEN_AXE",
+      "STONE_AXE",
+      "IRON_AXE",
+      "DIAMOND_AXE",
+      "NETHERITE_AXE",
+
+      "WOODEN_PICKAXE",
+      "GOLDEN_PICKAXE",
+      "STONE_PICKAXE",
+      "IRON_PICKAXE",
+      "DIAMOND_PICKAXE",
+      "NETHERITE_PICKAXE",
+
+      "WOODEN_SHOVEL",
+      "GOLDEN_SHOVEL",
+      "STONE_SHOVEL",
+      "IRON_SHOVEL",
+      "DIAMOND_SHOVEL",
+      "NETHERITE_SHOVEL",
+
+      "WOODEN_HOE",
+      "GOLDEN_HOE",
+      "STONE_HOE",
+      "IRON_HOE",
+      "DIAMOND_HOE",
+      "NETHERITE_HOE",
+
+      "FISHING_ROD",
+      "BOW",
+      "SHEARS",
+      "FLINT_AND_STEEL",
+      "CARROT_ON_A_STICK",
+      "WARPED_FUNGUS_ON_A_STICK",
+      "SHIELD",
+      "TRIDENT",
+      "CROSSBOW"
+    ]
+  },
+  "multishot": {
+    "name": "Multishot",
+    "max-level": 1,
+    "enchantment-target": "CROSSBOW",
+    "curse": false,
+    "conflicts": [
+      "minecraft:piercing"
+    ],
+    "enchantable": [
+      "CROSSBOW"
+    ]
+  },
+  "piercing": {
+    "name": "Piercing",
+    "max-level": 4,
+    "enchantment-target": "CROSSBOW",
+    "curse": false,
+    "conflicts": [
+      "minecraft:multishot"
+    ],
+    "enchantable": [
+      "CROSSBOW"
+    ]
+  },
+  "power": {
+    "name": "Power",
+    "max-level": 5,
+    "enchantment-target": "BOW",
+    "curse": false,
+    "conflicts": [],
+    "enchantable": [
+      "BOW"
+    ]
+  },
+  "projectile_protection": {
+    "name": "Projectile Protection",
+    "max-level": 4,
+    "enchantment-target": "ARMOR",
+    "curse": false,
+    "conflicts": [
+      "minecraft:protection",
+      "minecraft:blast_protection",
+      "minecraft:fire_protection"
+    ],
+    "enchantable": [
+      "LEATHER_HELMET",
+      "GOLDEN_HELMET",
+      "CHAINMAIL_HELMET",
+      "IRON_HELMET",
+      "DIAMOND_HELMET",
+      "NETHERITE_HELMET",
+      "TURTLE_HELMET",
+
+      "LEATHER_CHESTPLATE",
+      "GOLDEN_CHESTPLATE",
+      "CHAINMAIL_CHESTPLATE",
+      "IRON_CHESTPLATE",
+      "DIAMOND_CHESTPLATE",
+      "NETHERITE_CHESTPLATE",
+
+      "LEATHER_LEGGINGS",
+      "GOLDEN_LEGGINGS",
+      "CHAINMAIL_LEGGINGS",
+      "IRON_LEGGINGS",
+      "DIAMOND_LEGGINGS",
+      "NETHERITE_LEGGINGS",
+
+      "LEATHER_BOOTS",
+      "GOLDEN_BOOTS",
+      "CHAINMAIL_BOOTS",
+      "IRON_BOOTS",
+      "DIAMOND_BOOTS",
+      "NETHERITE_BOOTS"
+    ]
+  },
+  "protection": {
+    "name": "Protection",
+    "max-level": 4,
+    "enchantment-target": "ARMOR",
+    "curse": false,
+    "conflicts": [
+      "minecraft:projectile_protection",
+      "minecraft:blast_protection",
+      "minecraft:fire_protection"
+    ],
+    "enchantable": [
+      "LEATHER_HELMET",
+      "GOLDEN_HELMET",
+      "CHAINMAIL_HELMET",
+      "IRON_HELMET",
+      "DIAMOND_HELMET",
+      "NETHERITE_HELMET",
+      "TURTLE_HELMET",
+
+      "LEATHER_CHESTPLATE",
+      "GOLDEN_CHESTPLATE",
+      "CHAINMAIL_CHESTPLATE",
+      "IRON_CHESTPLATE",
+      "DIAMOND_CHESTPLATE",
+      "NETHERITE_CHESTPLATE",
+
+      "LEATHER_LEGGINGS",
+      "GOLDEN_LEGGINGS",
+      "CHAINMAIL_LEGGINGS",
+      "IRON_LEGGINGS",
+      "DIAMOND_LEGGINGS",
+      "NETHERITE_LEGGINGS",
+
+      "LEATHER_BOOTS",
+      "GOLDEN_BOOTS",
+      "CHAINMAIL_BOOTS",
+      "IRON_BOOTS",
+      "DIAMOND_BOOTS",
+      "NETHERITE_BOOTS"
+    ]
+  },
+  "punch": {
+    "name": "Punch",
+    "max-level": 2,
+    "enchantment-target": "BOW",
+    "curse": false,
+    "conflicts": [],
+    "enchantable": [
+      "BOW"
+    ]
+  },
+  "quick_charge": {
+    "name": "Quick Charge",
+    "max-level": 3,
+    "enchantment-target": "CROSSBOW",
+    "curse": false,
+    "conflicts": [],
+    "enchantable": [
+      "CROSSBOW"
+    ]
+  },
+  "respiration": {
+    "name": "Respiration",
+    "max-level": 3,
+    "enchantment-target": "ARMOR_HEAD",
+    "curse": false,
+    "conflicts": [],
+    "enchantable": [
+      "LEATHER_HELMET",
+      "GOLDEN_HELMET",
+      "CHAINMAIL_HELMET",
+      "IRON_HELMET",
+      "DIAMOND_HELMET",
+      "NETHERITE_HELMET",
+      "TURTLE_HELMET"
+    ]
+  },
+  "riptide": {
+    "name": "Riptide",
+    "max-level": 3,
+    "enchantment-target": "TRIDENT",
+    "curse": false,
+    "conflicts": [
+      "minecraft:channeling",
+      "minecraft:loyalty"
+    ],
+    "enchantable": [
+      "TRIDENT"
+    ]
+  },
+  "sharpness": {
+    "name": "Sharpness",
+    "max-level": 5,
+    "enchantment-target": "WEAPON",
+    "curse": false,
+    "conflicts": [
+      "minecraft:bane_of_arthropods",
+      "minecraft:smite"
+    ],
+    "enchantable": [
+      "WOODEN_SWORD",
+      "GOLDEN_SWORD",
+      "STONE_SWORD",
+      "IRON_SWORD",
+      "DIAMOND_SWORD",
+      "NETHERITE_SWORD",
+
+      "WOODEN_AXE",
+      "GOLDEN_AXE",
+      "STONE_AXE",
+      "IRON_AXE",
+      "DIAMOND_AXE",
+      "NETHERITE_AXE"
+    ]
+  },
+  "silk_touch": {
+    "name": "Silk Touch",
+    "max-level": 1,
+    "enchantment-target": "TOOL",
+    "curse": false,
+    "conflicts": [
+      "minecraft:fortune"
+    ],
+    "enchantable": [
+      "WOODEN_AXE",
+      "GOLDEN_AXE",
+      "STONE_AXE",
+      "IRON_AXE",
+      "DIAMOND_AXE",
+      "NETHERITE_AXE",
+
+      "WOODEN_PICKAXE",
+      "GOLDEN_PICKAXE",
+      "STONE_PICKAXE",
+      "IRON_PICKAXE",
+      "DIAMOND_PICKAXE",
+      "NETHERITE_PICKAXE",
+
+      "WOODEN_SHOVEL",
+      "GOLDEN_SHOVEL",
+      "STONE_SHOVEL",
+      "IRON_SHOVEL",
+      "DIAMOND_SHOVEL",
+      "NETHERITE_SHOVEL",
+
+      "WOODEN_HOE",
+      "GOLDEN_HOE",
+      "STONE_HOE",
+      "IRON_HOE",
+      "DIAMOND_HOE",
+      "NETHERITE_HOE",
+
+      "SHEARS"
+    ]
+  },
+  "smite": {
+    "name": "Smite",
+    "max-level": 5,
+    "enchantment-target": "WEAPON",
+    "curse": false,
+    "conflicts": [
+      "minecraft:bane_of_arthropods",
+      "minecraft:sharpness"
+    ],
+    "enchantable": [
+      "WOODEN_SWORD",
+      "GOLDEN_SWORD",
+      "STONE_SWORD",
+      "IRON_SWORD",
+      "DIAMOND_SWORD",
+      "NETHERITE_SWORD",
+
+      "WOODEN_AXE",
+      "GOLDEN_AXE",
+      "STONE_AXE",
+      "IRON_AXE",
+      "DIAMOND_AXE",
+      "NETHERITE_AXE"
+    ]
+  },
+  "soul_speed": {
+    "name": "Soul Speed",
+    "max-level": 3,
+    "enchantment-target": "ARMOR_FEET",
+    "curse": false,
+    "conflicts": [],
+    "enchantable": [
+      "LEATHER_BOOTS",
+      "GOLDEN_BOOTS",
+      "CHAINMAIL_BOOTS",
+      "IRON_BOOTS",
+      "DIAMOND_BOOTS",
+      "NETHERITE_BOOTS"
+    ]
+  },
+  "sweeping_edge": {
+    "name": "Sweeping Edge",
+    "max-level": 3,
+    "enchantment-target": "WEAPON",
+    "curse": false,
+    "conflicts": [],
+    "enchantable": [
+      "WOODEN_SWORD",
+      "GOLDEN_SWORD",
+      "STONE_SWORD",
+      "IRON_SWORD",
+      "DIAMOND_SWORD",
+      "NETHERITE_SWORD"
+    ]
+  },
+  "swift_sneak": {
+    "name": "Swift Sneak",
+    "max-level": 3,
+    "enchantment-target": "ARMOR_LEGS",
+    "curse": false,
+    "conflicts": [],
+    "enchantable": [
+      "LEATHER_LEGGINGS",
+      "GOLDEN_LEGGINGS",
+      "CHAINMAIL_LEGGINGS",
+      "IRON_LEGGINGS",
+      "DIAMOND_LEGGINGS",
+      "NETHERITE_LEGGINGS"
+    ]
+  },
+  "thorns": {
+    "name": "Thorns",
+    "max-level": 3,
+    "enchantment-target": "ARMOR",
+    "curse": false,
+    "conflicts": [],
+    "enchantable": [
+      "LEATHER_HELMET",
+      "GOLDEN_HELMET",
+      "CHAINMAIL_HELMET",
+      "IRON_HELMET",
+      "DIAMOND_HELMET",
+      "NETHERITE_HELMET",
+      "TURTLE_HELMET",
+
+      "LEATHER_CHESTPLATE",
+      "GOLDEN_CHESTPLATE",
+      "CHAINMAIL_CHESTPLATE",
+      "IRON_CHESTPLATE",
+      "DIAMOND_CHESTPLATE",
+      "NETHERITE_CHESTPLATE",
+
+      "LEATHER_LEGGINGS",
+      "GOLDEN_LEGGINGS",
+      "CHAINMAIL_LEGGINGS",
+      "IRON_LEGGINGS",
+      "DIAMOND_LEGGINGS",
+      "NETHERITE_LEGGINGS",
+
+      "LEATHER_BOOTS",
+      "GOLDEN_BOOTS",
+      "CHAINMAIL_BOOTS",
+      "IRON_BOOTS",
+      "DIAMOND_BOOTS",
+      "NETHERITE_BOOTS"
+    ]
+  },
+  "unbreaking": {
+    "name": "Unbreaking",
+    "max-level": 3,
+    "enchantment-target": "BREAKABLE",
+    "curse": false,
+    "conflicts": [],
+    "enchantable": [
+      "LEATHER_HELMET",
+      "GOLDEN_HELMET",
+      "CHAINMAIL_HELMET",
+      "IRON_HELMET",
+      "DIAMOND_HELMET",
+      "NETHERITE_HELMET",
+      "TURTLE_HELMET",
+
+      "ELYTRA",
+      "LEATHER_CHESTPLATE",
+      "GOLDEN_CHESTPLATE",
+      "CHAINMAIL_CHESTPLATE",
+      "IRON_CHESTPLATE",
+      "DIAMOND_CHESTPLATE",
+      "NETHERITE_CHESTPLATE",
+
+      "LEATHER_LEGGINGS",
+      "GOLDEN_LEGGINGS",
+      "CHAINMAIL_LEGGINGS",
+      "IRON_LEGGINGS",
+      "DIAMOND_LEGGINGS",
+      "NETHERITE_LEGGINGS",
+
+      "LEATHER_BOOTS",
+      "GOLDEN_BOOTS",
+      "CHAINMAIL_BOOTS",
+      "IRON_BOOTS",
+      "DIAMOND_BOOTS",
+      "NETHERITE_BOOTS",
+
+      "WOODEN_SWORD",
+      "GOLDEN_SWORD",
+      "STONE_SWORD",
+      "IRON_SWORD",
+      "DIAMOND_SWORD",
+      "NETHERITE_SWORD",
+
+      "WOODEN_AXE",
+      "GOLDEN_AXE",
+      "STONE_AXE",
+      "IRON_AXE",
+      "DIAMOND_AXE",
+      "NETHERITE_AXE",
+
+      "WOODEN_PICKAXE",
+      "GOLDEN_PICKAXE",
+      "STONE_PICKAXE",
+      "IRON_PICKAXE",
+      "DIAMOND_PICKAXE",
+      "NETHERITE_PICKAXE",
+
+      "WOODEN_SHOVEL",
+      "GOLDEN_SHOVEL",
+      "STONE_SHOVEL",
+      "IRON_SHOVEL",
+      "DIAMOND_SHOVEL",
+      "NETHERITE_SHOVEL",
+
+      "WOODEN_HOE",
+      "GOLDEN_HOE",
+      "STONE_HOE",
+      "IRON_HOE",
+      "DIAMOND_HOE",
+      "NETHERITE_HOE",
+
+      "FISHING_ROD",
+      "BOW",
+      "SHEARS",
+      "FLINT_AND_STEEL",
+      "CARROT_ON_A_STICK",
+      "WARPED_FUNGUS_ON_A_STICK",
+      "SHIELD",
+      "TRIDENT",
+      "CROSSBOW"
+    ]
+  }
+}
