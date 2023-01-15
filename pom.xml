@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>de.drachir000.library</groupId>
-    <artifactId>enchantments</artifactId>
+    <artifactId>elib</artifactId>
     <version>0.0.3</version>
     <packaging>jar</packaging>
 
@@ -32,8 +32,8 @@
 
     <licenses>
         <license>
-            <name>MIT</name>
-            <url>https://github.com/Drachir000/ELib/blob/master/LICENSE</url>
+            <name>MIT License</name>
+            <url>https://opensource.org/licenses/mit-license.php</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
@@ -41,6 +41,21 @@
     <build>
         <finalName>${project.name} v${project.version}</finalName>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.4.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.7.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>3.4.1</version>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
