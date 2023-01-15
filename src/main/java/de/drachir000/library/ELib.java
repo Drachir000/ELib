@@ -1,10 +1,10 @@
 package de.drachir000.library;
 
 import de.drachir000.library.enchantments.Enchantment;
+import de.drachir000.library.utils.ItemManager;
 import de.drachir000.library.utils.LoreManager;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.NamespacedKey;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
@@ -25,6 +25,7 @@ public final class ELib extends JavaPlugin {
     private List<Enchantment> registeredEnchantments;
 
     private LoreManager loreManager;
+    private ItemManager itemManager;
 
     @Override
     public void onEnable() {
@@ -37,6 +38,7 @@ public final class ELib extends JavaPlugin {
         // TODO: register enchantments from enchantments-configuration file
 
         this.loreManager = new LoreManager(this);
+        this.itemManager = new ItemManager(this);
 
         loadMetrics();
 
@@ -151,12 +153,21 @@ public final class ELib extends JavaPlugin {
     }
 
     /**
-     * Updates the lore of an item.
-     * @since 0.0.3
-     * @param item The item whose lore is to be updated
+     * get the lore manager. Necessary for the updateLore() method.
+     * @since 0.0.4
+     * @return th LoreManager
      */
-    public void updateLore(ItemStack item) {
-        loreManager.updateLore(item);
+    public LoreManager getLoreManager() {
+        return loreManager;
+    }
+
+    /**
+     * get the Item Manager. Used for a buch of item related actions, except the lore
+     * @since 0.0.4
+     * @return the ItemManager
+     */
+    public ItemManager getItemManager() {
+        return itemManager;
     }
 
     private void loadMetrics() {

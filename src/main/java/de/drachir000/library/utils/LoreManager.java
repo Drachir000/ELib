@@ -3,9 +3,7 @@ package de.drachir000.library.utils;
 import de.drachir000.library.ELib;
 import de.drachir000.library.enchantments.Enchantment;
 import de.tr7zw.changeme.nbtapi.NBTCompound;
-import de.tr7zw.changeme.nbtapi.NBTCompoundList;
 import de.tr7zw.changeme.nbtapi.NBTItem;
-import de.tr7zw.changeme.nbtapi.iface.ReadWriteNBT;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -56,7 +54,7 @@ public class LoreManager {
 
     }
 
-    public void removeLore(ItemStack item) {
+    private void removeLore(ItemStack item) {
 
         if (!item.hasItemMeta())
             return;
@@ -111,12 +109,12 @@ public class LoreManager {
 
     }
 
-    public void addLore(ItemStack item) {
+    private void addLore(ItemStack item) {
 
         if (!item.hasItemMeta())
             return;
 
-        Map<Enchantment, Short> enchantmentsMap = getEnchantments(item);
+        Map<Enchantment, Short> enchantmentsMap = eLib.getItemManager().getEnchantments(item);
 
         ItemMeta itemMeta = item.getItemMeta();
 
@@ -143,26 +141,6 @@ public class LoreManager {
         item.setItemMeta(itemMeta);
 
         addLoreLinesToNBT(item, addedEnchantments);
-
-    }
-
-    public Map<Enchantment, Short> getEnchantments(ItemStack item) { // TODO move to ItemManager
-
-        NBTItem nbtItem = new NBTItem(item);
-
-        NBTCompoundList enchantmentsList = nbtItem.getCompoundList("Enchantments");
-
-        HashMap<Enchantment, Short> enchantmentsMap = new HashMap<>();
-
-        for (ReadWriteNBT enchantmentEntry : enchantmentsList) {
-            Enchantment enchantment = eLib.getByNamespacedKey(enchantmentEntry.getString("id"));
-            if (enchantment == null)
-                continue;
-            Short level = enchantmentEntry.getShort("lvl");
-            enchantmentsMap.put(enchantment, level);
-        }
-
-        return enchantmentsMap;
 
     }
 

@@ -33,7 +33,7 @@ public abstract class Enchantment extends org.bukkit.enchantments.Enchantment {
      * @param minLevel The minimal level of the enchantment. Can't be lower than 1 or higher than the maximum level<br>
      * @param maxLevel The maximal level of the enchantment. Can't be lower than 1<br>
      * @param enchantmentTarget The targeted group of item types, this enchantment should be able to get applied on. (This is not used, to determine if a specific item is enchantable)<br>
-     * @param curse Whether this enchantment is a curse (this won't affect the lore color, for the lore color you have to change the defaultPrefix & maxLevelPrefix)<br>
+     * @param curse Whether this enchantment is a curse (this won't affect the lore color, for the lore color you have to change the defaultPrefix and maxLevelPrefix)<br>
      * @param conflicts A list of namespaces of enchantments this enchantment conflicts with<br>
      * @param enchantable A list of every material type, this enchantment should be able to get applied on<br>
      * */
@@ -79,7 +79,7 @@ public abstract class Enchantment extends org.bukkit.enchantments.Enchantment {
      * @param plugin The instance of the JavaPlugin, that adds this enchantment<br>
      * @param maxLevel The maximal level of the enchantment. Can't be lower than 1<br>
      * @param enchantmentTarget The targeted group of item types, this enchantment should be able to get applied on. (This is not used, to determine if a specific item is enchantable)<br>
-     * @param curse Whether this enchantment is a curse (this won't affect the lore color, for the lore color you have to change the defaultPrefix & maxLevelPrefix)<br>
+     * @param curse Whether this enchantment is a curse (this won't affect the lore color, for the lore color you have to change the defaultPrefix and maxLevelPrefix)<br>
      * @param conflicts A list of namespaces of enchantments this enchantment conflicts with<br>
      * @param enchantable A list of every material type, this enchantment should be able to get applied on<br>
      * */
@@ -99,7 +99,7 @@ public abstract class Enchantment extends org.bukkit.enchantments.Enchantment {
      * minLevel - The minimal level of the enchantment. Will be 1.
      * <br>
      * <br>
-     * curse - Whether this enchantment is a curse (this won't affect the lore color, for the lore color you have to change the defaultPrefix & maxLevelPrefix). Will be false.
+     * curse - Whether this enchantment is a curse (this won't affect the lore color, for the lore color you have to change the defaultPrefix and maxLevelPrefix). Will be false.
      * <br>
      * <br>
      * conflicts - A list of namespaces of enchantments this enchantment conflicts with. Will be empty.
@@ -350,7 +350,7 @@ public abstract class Enchantment extends org.bukkit.enchantments.Enchantment {
 
     /**
      * @since 0.0.1
-     * @return Whether this enchantment is a curse (this won't affect the lore color, for the lore color you have to change the defaultPrefix & maxLevelPrefix)
+     * @return Whether this enchantment is a curse (this won't affect the lore color, for the lore color you have to change the defaultPrefix and maxLevelPrefix)
      */
     public boolean isCurse() {
         return curse;
@@ -358,7 +358,7 @@ public abstract class Enchantment extends org.bukkit.enchantments.Enchantment {
 
     /**
      * @since 0.0.1
-     * @param curse Whether this enchantment is a curse (this won't affect the lore color, for the lore color you have to change the defaultPrefix & maxLevelPrefix)
+     * @param curse Whether this enchantment is a curse (this won't affect the lore color, for the lore color you have to change the defaultPrefix and maxLevelPrefix)
      */
     public void setCurse(boolean curse) {
         this.curse = curse;
