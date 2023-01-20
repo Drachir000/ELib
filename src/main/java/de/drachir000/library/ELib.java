@@ -1,17 +1,17 @@
 package de.drachir000.library;
 
-import de.drachir000.library.enchantments.Enchantment;
+import de.drachir000.library.utils.EnchantmentManager;
 import de.drachir000.library.utils.ItemManager;
 import de.drachir000.library.utils.LoreManager;
 import org.bstats.bukkit.Metrics;
-import org.bukkit.NamespacedKey;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
 
 /**
  * The main Enchantment-Library class
+ *
  * @author Drachir000
  * @since 0.0.0
  */
@@ -22,8 +22,7 @@ public final class ELib extends JavaPlugin {
 
     private static ELib instance;
 
-    private List<Enchantment> registeredEnchantments;
-
+    private EnchantmentManager enchantmentManager;
     private LoreManager loreManager;
     private ItemManager itemManager;
 
@@ -33,129 +32,47 @@ public final class ELib extends JavaPlugin {
 
         instance = this;
 
-        this.registeredEnchantments = new ArrayList<>();
-        // TODO: register vanilla enchantments
-        // TODO: register enchantments from enchantments-configuration file
-
+        this.enchantmentManager = new EnchantmentManager(this);
         this.loreManager = new LoreManager(this);
-        this.itemManager = new ItemManager(this);
+        this.itemManager = new ItemManager(this, enchantmentManager);
+
+        try {
+            enchantmentManager.registerVanillaEnchantments();
+        } catch (FileNotFoundException e) {
+            getLogger().log(Level.SEVERE, "Failed to register vanilla enchantments!!!");
+            e.printStackTrace();
+            getPluginLoader().disablePlugin(this);
+            return;
+        }
+        // TODO: register enchantments from enchantments-configuration file
 
         loadMetrics();
 
     }
 
     /**
-     * @since 0.0.2
      * @return The instance of this Library (null if this plugin isn't enabled)
+     * @since 0.0.2
      */
     public static ELib getInstance() {
         return instance;
     }
 
     /**
-     * @since 0.0.2
-     * @return A List of all currently registered enchantments
+     * get the Enchantment Manager. Used for a buch of enchantment related actions.
+     *
+     * @return th EnchantmentManager
+     * @since 0.0.5
      */
-    public List<Enchantment> getRegisteredEnchantments() {
-        return registeredEnchantments;
-    }
-
-    /**
-     * Register a custom enchantment
-     * @since 0.0.2
-     * @param enchantment The enchantment to register
-     * @return false, if the enchantment already is registered
-     */
-    public boolean registerEnchantment(Enchantment enchantment) {
-        if (registeredEnchantments.contains(enchantment))
-            return false;
-        registeredEnchantments.add(enchantment);
-        return true;
-    }
-
-    /**
-     * @since 0.0.2
-     * @param enchantment The enchantment to test
-     * @return true, if the enchantment already is registered
-     */
-    public boolean isRegistered(Enchantment enchantment) {
-        return registeredEnchantments.contains(enchantment);
-    }
-
-    /**
-     * @since 0.0.2
-     * @param namespacedKey The NamespacedKey of the enchantment to test
-     * @return true, if the enchantment already is registered
-     */
-    public boolean isRegistered(NamespacedKey namespacedKey) {
-        for (Enchantment registeredEnchantment : registeredEnchantments) {
-            if (registeredEnchantment.getNamespacedKey().equals(namespacedKey))
-                return true;
-        }
-        return false;
-    }
-
-    /**
-     * @since 0.0.2
-     * @param namespacedKey The NamespacedKey of the enchantment to test
-     * @return true, if the enchantment already is registered
-     */
-    public boolean isRegistered(String namespacedKey) {
-        for (Enchantment registeredEnchantment : registeredEnchantments) {
-            NamespacedKey registeredNamespacedKey = registeredEnchantment.getNamespacedKey();
-            String registeredNamespacedKeyString = registeredNamespacedKey.getNamespace() + ":" + registeredNamespacedKey.getKey();
-            if (registeredNamespacedKeyString.equals(namespacedKey))
-                return true;
-        }
-        return false;
-    }
-
-    /**
-     * Unregisters an Enchantment. This won't delete the enchantment from items, it will just mean, that, none of this libraries features works for this enchantment anymore.
-     * Note: This will also mean, that when updating the lore, this Enchantment will disappear from the list, but it is still there!
-     * @since 0.0.2
-     * @param enchantment the enchantment to unregister
-     * @return true, if the enchantment was registered
-     */
-    public boolean unregisterEnchantment(Enchantment enchantment) {
-        return registeredEnchantments.remove(enchantment);
-    }
-
-    /**
-     * Gets an enchantment by its namespacedKey.
-     * @since 0.0.2
-     * @param namespacedKey the namespacedKey of the enchantment to get
-     * @return the enchantment with the namespacedKey if registered, null otherwise
-     */
-    public Enchantment getByNamespacedKey(NamespacedKey namespacedKey) {
-        for (Enchantment registeredEnchantment : registeredEnchantments) {
-            NamespacedKey registeredNamespacedKey = registeredEnchantment.getNamespacedKey();
-            if (namespacedKey.equals(registeredNamespacedKey))
-                return registeredEnchantment;
-        }
-        return null;
-    }
-
-    /**
-     * Gets an enchantment by its namespacedKey.
-     * @since 0.0.2
-     * @param namespacedKey the namespacedKey of the enchantment to get
-     * @return the enchantment with the namespacedKey if registered, null otherwise
-     */
-    public Enchantment getByNamespacedKey(String namespacedKey) {
-        for (Enchantment registeredEnchantment : registeredEnchantments) {
-            NamespacedKey registeredNamespacedKey = registeredEnchantment.getNamespacedKey();
-            String registeredNamespacedKeyString = registeredNamespacedKey.getNamespace() + ":" + registeredNamespacedKey.getKey();
-            if (namespacedKey.equals(registeredNamespacedKeyString))
-                return registeredEnchantment;
-        }
-        return null;
+    public EnchantmentManager getEnchantmentManager() {
+        return enchantmentManager;
     }
 
     /**
      * get the lore manager. Necessary for the updateLore() method.
-     * @since 0.0.4
+     *
      * @return th LoreManager
+     * @since 0.0.4
      */
     public LoreManager getLoreManager() {
         return loreManager;
@@ -163,8 +80,9 @@ public final class ELib extends JavaPlugin {
 
     /**
      * get the Item Manager. Used for a buch of item related actions, except the lore
-     * @since 0.0.4
+     *
      * @return the ItemManager
+     * @since 0.0.4
      */
     public ItemManager getItemManager() {
         return itemManager;

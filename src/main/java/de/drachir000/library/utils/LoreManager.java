@@ -11,6 +11,7 @@ import java.util.*;
 
 /**
  * The Item-Lore managing class
+ *
  * @author Drachir000
  * @since 0.0.3
  */
@@ -172,8 +173,8 @@ public class LoreManager {
         }
         // TODO add config option to stop using roman format earlier that 100
         StringBuilder resultBuilder = new StringBuilder();
-        int[] values = { 100, 90, 50, 40, 10, 9, 5, 4, 1 };
-        String[] symbols = { "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
+        int[] values = {100, 90, 50, 40, 10, 9, 5, 4, 1};
+        String[] symbols = {"C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
         for (int i = 0; i < values.length; i++) {
             while (num >= values[i]) {
                 num -= values[i];
@@ -183,7 +184,7 @@ public class LoreManager {
         return resultBuilder.toString(); // TODO add config option to replace "I" with ""
     }
 
-    private void addLoreLinesToNBT(ItemStack item, Map<String, String> addedLores) {
+    private void addLoreLinesToNBT(ItemStack item, Map<String, String> addedLoreLines) {
 
         NBTItem nbtItem = new NBTItem(item);
 
@@ -193,7 +194,7 @@ public class LoreManager {
 
         NBTCompound loreCompound = pluginCompound.getOrCreateCompound("lore");
 
-        for (Map.Entry<String, String> loreEntry : addedLores.entrySet()) {
+        for (Map.Entry<String, String> loreEntry : addedLoreLines.entrySet()) {
             loreCompound.setString(loreEntry.getKey(), loreEntry.getValue());
         }
 
