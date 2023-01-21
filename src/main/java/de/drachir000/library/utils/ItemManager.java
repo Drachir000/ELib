@@ -381,7 +381,7 @@ public class ItemManager {
 
         for (org.bukkit.enchantments.Enchantment ench : Enchantment.values()) {
             if (ench.getKey().equals(enchantment.getNamespacedKey())) {
-                item.addEnchantment(ench, level);
+                item.addUnsafeEnchantment(ench, level);
                 break;
             }
         }
