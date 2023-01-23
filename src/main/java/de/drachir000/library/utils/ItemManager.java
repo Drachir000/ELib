@@ -2,6 +2,9 @@ package de.drachir000.library.utils;
 
 import de.drachir000.library.ELib;
 import de.drachir000.library.enchantments.Enchantment;
+import de.tr7zw.changeme.nbtapi.NBTCompoundList;
+import de.tr7zw.changeme.nbtapi.NBTItem;
+import de.tr7zw.changeme.nbtapi.iface.ReadWriteNBT;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -28,39 +31,50 @@ public class ItemManager {
     /**
      * Get a map containing all registered enchantments on an item with the corresponding levels
      *
+     * @param nbtItem the NBTItem element of the item whose enchantments are to be obtained
+     * @return a map containing all registered enchantments on the item with the corresponding levels
+     * @since 0.0.6
+     */
+    public Map<Enchantment, Short> getEnchantments(NBTItem nbtItem) {
+
+        Map<Enchantment, Short> result = new HashMap<>();
+
+        if (nbtItem == null)
+            return result;
+
+        NBTCompoundList enchantments = nbtItem.getCompoundList("Enchantments");
+
+        for (ReadWriteNBT enchantment : enchantments) {
+            NamespacedKey namespacedKey = NamespacedKey.fromString(enchantment.getString("id"), null);
+            Enchantment registeredEnchantment = enchantmentManager.getByNamespacedKey(namespacedKey);
+            if (registeredEnchantment == null)
+                continue;
+            if (enchantment.getInteger("lvl") < 1)
+                continue;
+            short level;
+            if (enchantment.getInteger("lvl") > Short.MAX_VALUE)
+                level = Short.MAX_VALUE;
+            else
+                level = enchantment.getInteger("lvl").shortValue();
+            result.put(registeredEnchantment, level);
+        }
+
+        return result;
+
+    }
+
+    /**
+     * Get a map containing all registered enchantments on an item with the corresponding levels
+     *
      * @param item the item whose enchantments are to be obtained
      * @return a map containing all registered enchantments on the item with the corresponding levels
      * @since 0.0.4
      */
     public Map<Enchantment, Short> getEnchantments(ItemStack item) {
 
-        Map<Enchantment, Short> result = new HashMap<>();
+        NBTItem nbtItem = new NBTItem(item);
 
-        if (item == null || item.getType().isAir())
-            return result;
-        if (!item.hasItemMeta())
-            return result;
-
-        ItemMeta itemMeta = item.getItemMeta();
-
-        Map<org.bukkit.enchantments.Enchantment, Integer> enchantments = itemMeta.getEnchants();
-
-        for (Map.Entry<org.bukkit.enchantments.Enchantment, Integer> enchantment : enchantments.entrySet()) {
-            NamespacedKey namespacedKey = enchantment.getKey().getKey();
-            Enchantment registeredEnchantment = enchantmentManager.getByNamespacedKey(namespacedKey);
-            if (registeredEnchantment == null)
-                continue;
-            if (enchantment.getValue() < 1)
-                continue;
-            short level;
-            if (enchantment.getValue() > Short.MAX_VALUE)
-                level = Short.MAX_VALUE;
-            else
-                level = enchantment.getValue().shortValue();
-            result.put(registeredEnchantment, level);
-        }
-
-        return result;
+        return getEnchantments(nbtItem);
 
     }
 
