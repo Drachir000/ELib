@@ -2,12 +2,15 @@ package de.drachir000.library.utils;
 
 import de.drachir000.library.ELib;
 import de.drachir000.library.enchantments.Enchantment;
-import de.tr7zw.changeme.nbtapi.NBTCompound;
-import de.tr7zw.changeme.nbtapi.NBTItem;
+import de.tr7zw.changeme.nbtapi.*;
+import net.kyori.adventure.text.TextComponent;
+import net.kyori.adventure.text.serializer.gson.GsonComponentSerializer;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Map;
 
 /**
  * The Item-Lore managing class
@@ -23,129 +26,119 @@ public class LoreManager {
         this.eLib = eLib;
     }
 
+    /**
+     * Updates the lore of an item.
+     *
+     * @param item The item whose lore is to be updated
+     * @since 0.0.6
+     */
     public void updateLore(ItemStack item) {
 
-        ItemStack itemStack;
-        try {
-            itemStack = item.clone();
-        } catch (Exception ignored) {
-            return;
-        }
-
-        if (!itemStack.hasItemMeta())
+        if (!item.hasItemMeta())
             return;
 
-        hideFlags(itemStack);
+        NBTItem nbtItem = new NBTItem(item, true);
 
-        removeLore(itemStack);
+        hideFlags(nbtItem);
 
-        addLore(itemStack);
+        removeLore(nbtItem);
 
-        item = itemStack;
+        addLore(nbtItem);
+
+        nbtItem.applyNBT(item);
 
     }
 
-    private void hideFlags(ItemStack item) {
-
-        NBTItem nbtItem = new NBTItem(item);
+    private void hideFlags(NBTItem nbtItem) {
 
         nbtItem.setBoolean("HideFlags", true);
 
-        item = nbtItem.getItem();
-
     }
 
-    private void removeLore(ItemStack item) {
+    private void removeLore(NBTItem nbtItem) {
 
-        if (!item.hasItemMeta())
+        NBTCompound displayCompound = nbtItem.getCompound("display");
+
+        if (displayCompound == null)
             return;
 
-        NBTItem nbtItem = new NBTItem(item);
+        NBTList<String> loreEntries = displayCompound.getStringList("Lore");
+        Collection<String> toRemove = new ArrayList<>();
 
-        NBTCompound pluginCompound = nbtItem.getOrCreateCompound("ELib");
-
-        if (!pluginCompound.getBoolean("has-lore"))
-            return;
-
-        NBTCompound loreCompound = pluginCompound.getOrCreateCompound("lore");
-
-        Set<String> loreLines = loreCompound.getKeys();
-
-        pluginCompound.removeKey("lore");
-        pluginCompound.setBoolean("has-lore", false);
-
-        item = nbtItem.getItem();
-
-        ItemMeta itemMeta = item.getItemMeta();
-        List<String> lore = trimLore(item, loreLines);
-
-        itemMeta.setLore(lore);
-        item.setItemMeta(itemMeta);
-
-    }
-
-    private List<String> trimLore(ItemStack item, Set<String> loreLines) {
-
-        ItemMeta itemMeta = item.getItemMeta();
-        List<String> lore = new ArrayList<>();
-
-        boolean separator = true;
-        for (String currentLine : itemMeta.getLore()) {
-            if (currentLine.equals("") && separator) {
-                separator = false;
-                continue;
-            }
-            boolean keep = true;
-            for (String loreLine : loreLines) {
-                if (loreLine.contains(currentLine)) {
-                    keep = false;
-                    break;
-                }
-            }
-            if (keep)
-                lore.add(currentLine);
+        for (String loreEntry : loreEntries) {
+            NBTCompoundList lore = getLoreList(loreEntry);
+            if (lore.get(0).getString("ELib-loreLine").equals("true") || lore.get(0).getBoolean("ELib-loreLine"))
+                toRemove.add(loreEntry);
         }
 
-        return lore;
+        loreEntries.removeAll(toRemove);
 
     }
 
-    private void addLore(ItemStack item) {
+    private NBTCompoundList getLoreList(String loreEntry) {
 
-        if (!item.hasItemMeta())
+        String jsonString = "{" +
+                "List: " +
+                loreEntry +
+                "}";
+
+        NBTCompound compound = new NBTContainer(jsonString);
+
+        return compound.getCompoundList("List");
+
+    }
+
+    private void addLore(NBTItem nbtItem) {
+
+        NBTCompound displayCompound = nbtItem.getOrCreateCompound("display");
+
+        NBTList<String> lore = displayCompound.getStringList("Lore");
+
+        Map<Enchantment, Short> enchantmentsMap = eLib.getItemManager().getEnchantments(nbtItem);
+
+        if (enchantmentsMap.isEmpty())
             return;
 
-        Map<Enchantment, Short> enchantmentsMap = eLib.getItemManager().getEnchantments(item);
+        lore.add(0, "[{\"ELib-loreLine\": true, \"text\": \"\"}]");
 
-        ItemMeta itemMeta = item.getItemMeta();
+        for (Map.Entry<Enchantment, Short> enchantmentEntry : enchantmentsMap.entrySet()) {
 
-        List<String> lore = itemMeta.getLore();
+            NBTCompound loreCompound = createLoreLine(enchantmentEntry.getKey(), enchantmentEntry.getValue());
+            String line = "[" + loreCompound + "]";
+            line = line.replaceAll("1b", "\"true\"")
+                    .replaceAll("0b", "\"false\"")
+                    .replaceAll("ELib-loreLine", "\"ELib-loreLine\"")
+                    .replaceAll("extra", "\"extra\"")
+                    .replaceAll("bold", "\"bold\"")
+                    .replaceAll("italic", "\"italic\"")
+                    .replaceAll("obfuscated", "\"obfuscated\"")
+                    .replaceAll("text", "\"text\"")
+                    .replaceAll("underlined", "\"underlined\"")
+                    .replaceAll("color", "\"color\"");
+            lore.add(0, line);
 
-        if (lore == null)
-            lore = new ArrayList<>();
-
-        lore.add(0, "");
-
-        HashMap<String, String> addedEnchantments = new HashMap<>();
-
-        for (Map.Entry<Enchantment, Short> enchantment : enchantmentsMap.entrySet()) {
-            if (enchantment.getKey() == null)
-                continue;
-            Enchantment ench = enchantment.getKey();
-            String loreLine = getLoreLine(ench, enchantment.getValue());
-            lore.add(0, loreLine);
-            String namespacedKey = ench.getNamespacedKey().getNamespace() + ":" + ench.getNamespacedKey().getKey();
-            addedEnchantments.put(loreLine, namespacedKey);
         }
-
-        itemMeta.setLore(lore);
-        item.setItemMeta(itemMeta);
-
-        addLoreLinesToNBT(item, addedEnchantments);
 
     }
 
-    private String getLoreLine(Enchantment enchantment, Short level) {
+    private NBTCompound createLoreLine(Enchantment enchantment, Short level) {
+
+        String loreLineString = getFullLoreLineString(enchantment, level);
+
+        String jsonLoreLineString = toJsonLore(loreLineString);
+
+        NBTCompound loreCompound = new NBTContainer(jsonLoreLineString);
+
+        loreCompound.setString("ELib-loreLine", "true");
+
+        if (!loreCompound.hasTag("italic"))
+            loreCompound.setBoolean("italic", false);
+
+        return loreCompound;
+
+    }
+
+    private String getFullLoreLineString(Enchantment enchantment, Short level) {
 
         StringBuilder resultBuilder = new StringBuilder();
 
@@ -172,6 +165,7 @@ public class LoreManager {
             return Integer.toString(num);
         }
         // TODO add config option to stop using roman format earlier that 100
+        // TODO maybe? increase max possible value
         StringBuilder resultBuilder = new StringBuilder();
         int[] values = {100, 90, 50, 40, 10, 9, 5, 4, 1};
         String[] symbols = {"C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
@@ -184,21 +178,11 @@ public class LoreManager {
         return resultBuilder.toString(); // TODO add config option to replace "I" with ""
     }
 
-    private void addLoreLinesToNBT(ItemStack item, Map<String, String> addedLoreLines) {
+    private String toJsonLore(String lore) {
 
-        NBTItem nbtItem = new NBTItem(item);
-
-        NBTCompound pluginCompound = nbtItem.getOrCreateCompound("ELib");
-
-        pluginCompound.setBoolean("has-lore", true);
-
-        NBTCompound loreCompound = pluginCompound.getOrCreateCompound("lore");
-
-        for (Map.Entry<String, String> loreEntry : addedLoreLines.entrySet()) {
-            loreCompound.setString(loreEntry.getKey(), loreEntry.getValue());
-        }
-
-        item = nbtItem.getItem();
+        LegacyComponentSerializer serializer = LegacyComponentSerializer.builder().hexColors().character('§').build();
+        TextComponent textComponent = serializer.deserialize(lore);
+        return GsonComponentSerializer.gson().serialize(textComponent);
 
     }
 
