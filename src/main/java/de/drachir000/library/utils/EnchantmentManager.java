@@ -9,7 +9,9 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.EnchantmentTarget;
 
 import java.io.FileNotFoundException;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
 
@@ -169,6 +171,163 @@ public class EnchantmentManager {
 
         return new Enchantment(name, defaultPrefix, maxLevelPrefix, namespacedKey, minLevel, maxLevel, enchantmentTarget, curse, conflicts, enchantable) {
         };
+
+    }
+
+    /**
+     * Register an enchantment to the Server
+     *
+     * @param enchantment       the enchantment to register
+     * @param registerToLibrary whether the enchantment should get registered to ELib too, if it isn't already
+     * @return true, if the enchantment is registered, false otherwise
+     * @since 0.0.7
+     */
+    public boolean registerToServer(Enchantment enchantment, boolean registerToLibrary) {
+
+        if (registerToLibrary)
+            registerEnchantment(enchantment);
+
+        for (org.bukkit.enchantments.Enchantment registeredEnchantment : org.bukkit.enchantments.Enchantment.values()) {
+            if (registeredEnchantment.equals(enchantment)) {
+                return true;
+            }
+        }
+
+        try {
+
+            Field fieldAcceptingNew = org.bukkit.enchantments.Enchantment.class.getDeclaredField("acceptingNew");
+
+            fieldAcceptingNew.setAccessible(true);
+
+            fieldAcceptingNew.set(null, true);
+
+            fieldAcceptingNew.setAccessible(false);
+
+            org.bukkit.enchantments.Enchantment.registerEnchantment(enchantment);
+
+            org.bukkit.enchantments.Enchantment.stopAcceptingRegistrations();
+
+            return true;
+
+        } catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException |
+                 IllegalStateException ignored) {
+            return false;
+        }
+
+    }
+
+    /**
+     * Register an enchantment, that is already registered to ELib, to the Server
+     *
+     * @param namespacedKey the namespacedKey of the enchantment to register
+     * @return true, if the enchantment is registered, false otherwise
+     * @since 0.0.7
+     */
+    public boolean registerToServer(NamespacedKey namespacedKey) {
+
+        Enchantment enchantment = getByNamespacedKey(namespacedKey);
+
+        return registerToServer(enchantment, false);
+
+    }
+
+    /**
+     * Register an enchantment, that is already registered to ELib, to the Server
+     *
+     * @param namespacedKey the namespacedKey of the enchantment to register
+     * @return true, if the enchantment is registered, false otherwise
+     * @since 0.0.7
+     */
+    public boolean registerToServer(String namespacedKey) {
+
+        Enchantment enchantment = getByNamespacedKey(namespacedKey);
+
+        return registerToServer(enchantment, false);
+
+    }
+
+    /**
+     * Unregister an enchantment from the Server
+     *
+     * @param enchantment           the enchantment to unregister
+     * @param unregisterFromLibrary whether the enchantment should get unregistered from ELib too, if it is registered
+     * @return true, if the enchantment is now unregistered
+     * @since 0.0.7
+     */
+    public boolean unregisterFromServer(Enchantment enchantment, boolean unregisterFromLibrary) {
+
+        boolean registered = false;
+        for (org.bukkit.enchantments.Enchantment registeredEnchantment : org.bukkit.enchantments.Enchantment.values()) {
+            if (registeredEnchantment.equals(enchantment)) {
+                registered = true;
+                break;
+            }
+        }
+        if (!registered) {
+
+            if (unregisterFromLibrary)
+                unregisterEnchantment(enchantment);
+
+            return true;
+        }
+
+        try {
+
+            Field keyField = org.bukkit.enchantments.Enchantment.class.getDeclaredField("byKey");
+
+            keyField.setAccessible(true);
+            @SuppressWarnings("unchecked")
+            HashMap<NamespacedKey, org.bukkit.enchantments.Enchantment> byKey = (HashMap<NamespacedKey, org.bukkit.enchantments.Enchantment>) keyField.get(null);
+
+            byKey.remove(enchantment.getKey());
+            Field nameField = org.bukkit.enchantments.Enchantment.class.getDeclaredField("byName");
+
+            nameField.setAccessible(true);
+            @SuppressWarnings("unchecked")
+            HashMap<String, org.bukkit.enchantments.Enchantment> byName = (HashMap<String, org.bukkit.enchantments.Enchantment>) nameField.get(null);
+
+            byName.remove(enchantment.getName());
+
+            if (unregisterFromLibrary)
+                unregisterEnchantment(enchantment);
+
+            return true;
+
+        } catch (Exception ignored) {
+            return false;
+        }
+
+    }
+
+    /**
+     * Unregister an enchantment, that is registered to ELib, from the Server
+     *
+     * @param namespacedKey         the namespacedKey of the enchantment to unregister
+     * @param unregisterFromLibrary whether the enchantment should get unregistered from ELib too, if it is registered
+     * @return true, if the enchantment is now unregistered
+     * @since 0.0.7
+     */
+    public boolean unregisterFromServer(NamespacedKey namespacedKey, boolean unregisterFromLibrary) {
+
+        Enchantment enchantment = getByNamespacedKey(namespacedKey);
+
+        return unregisterFromServer(enchantment, unregisterFromLibrary);
+
+    }
+
+    /**
+     * Unregister an enchantment, that is registered to ELib, from the Server
+     *
+     * @param namespacedKey         the namespacedKey of the enchantment to unregister
+     * @param unregisterFromLibrary whether the enchantment should get unregistered from ELib too, if it is registered
+     * @return true, if the enchantment is now unregistered
+     * @since 0.0.7
+     */
+    public boolean unregisterFromServer(String namespacedKey, boolean unregisterFromLibrary) {
+
+        Enchantment enchantment = getByNamespacedKey(namespacedKey);
+
+        return unregisterFromServer(enchantment, unregisterFromLibrary);
 
     }
 
